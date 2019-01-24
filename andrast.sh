@@ -17,7 +17,7 @@ function createCert {
   openssl x509 -req -days 1 -in server.csr -signkey server.key -out server.crt
 }
 
-function getCert {
+function getFingerprint {
   #Get Fingerprint that
   openssl x509 -noout -fingerprint -sha1 -inform pem -in server.crt
 }
@@ -29,6 +29,6 @@ if [ -z ${1+x} ]; then
 elif [ "$1" == 'create' ]; then
   createCert
 elif [ "$1" == 'fingerprint' ]; then
-  getCert
+  getFingerprint
 fi
 
